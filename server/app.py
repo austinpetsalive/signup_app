@@ -92,6 +92,8 @@ class Insert(Resource):
 
     def append_row(self, data):
         service = get_service(self.credentials)
+        now = datetime.datetime.strftime(
+            datetime.datetime.now(), '%m/%d/%Y %H:%M:%S')
         service.spreadsheets().batchUpdate(
             spreadsheetId=self.spreadsheet_id,
             body={
@@ -104,7 +106,7 @@ class Insert(Resource):
                                     'values': [
                                         {
                                             "userEnteredValue": {
-                                                "formulaValue": "=NOW()"
+                                                "stringValue": now
                                             }
                                         },
                                         {
