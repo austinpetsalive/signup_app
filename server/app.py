@@ -67,7 +67,7 @@ class Insert(Resource):
     def __init__(self):
         super().__init__()
         self.credentials = get_credentials()
-        self.spreadsheet_id = '13G18E8A8Z4x9Utq3Kl55vahODs1eDrhT7Qz7atap1LU'
+        self.spreadsheet_id = '13mP8poVEmTk3aTP8neSTBDOfKXQUDUwhdWUMG5cLN8g'
         service = get_service(self.credentials)
         sheets = service.spreadsheets().get(
             spreadsheetId=self.spreadsheet_id).execute()
@@ -108,7 +108,12 @@ class Insert(Resource):
                                     'values': [
                                         {
                                             "userEnteredValue": {
-                                                "stringValue": now
+                                                "formulaValue":  '=VALUE("{}")'.format(now)
+                                            },
+                                            "userEnteredFormat": {
+                                                "numberFormat": {
+                                                    "type": "DATE_TIME"
+                                                }
                                             }
                                         },
                                         {
