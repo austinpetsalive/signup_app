@@ -82,6 +82,7 @@ class Insert(Resource):
         parser.add_argument('lives_with', type=str, required=True)
         parser.add_argument('lifestyle', type=str, required=True)
         parser.add_argument('fostering', type=str, required=True)
+        parser.add_argument('newsletter', type=str, required=True)
         parser.add_argument('_token', type=str, required=True)
         return parser.parse_args()
         
@@ -144,6 +145,11 @@ class Insert(Resource):
                                         {
                                             "userEnteredValue": {
                                                 "stringValue": data['fostering']
+                                            }
+                                        },
+                                        {
+                                            "userEnteredValue": {
+                                                "stringValue": data['newsletter']
                                             }
                                         }
                                     ]
